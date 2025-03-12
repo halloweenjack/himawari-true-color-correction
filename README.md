@@ -1,6 +1,15 @@
 # ひまわり衛星True Color補正プログラム
 
-気象衛星ひまわり8号・9号衛星データの陸・海域を鮮明に見ることができるよう、ひまわりTrue colorの色補正を行うImageMagickコマンドです。
+気象衛星ひまわり8号・9号が撮影した画像データの陸域・海域をより鮮明に表示するための画像処理コマンドです。ImageMagickを使用して、True Color画像の色調補正を行います。
+
+## ひまわり衛星画像について
+
+気象衛星ひまわり8号・9号は、日本の静止気象衛星で、地球の天気や気象現象を観測しています。衛星が撮影した画像データは以下の2種類があります：
+
+1. フルディスク画像：地球全体を撮影した画像
+2. 日本域画像：日本周辺を拡大して撮影した画像
+
+これらの画像は通常PNG形式で提供されており、本プログラムではこれらの画像をより見やすく加工することができます。
 
 ## 必要条件
 
@@ -37,13 +46,20 @@ convert {input}.png -gamma 1.6 -modulate 100,290,102 -contrast -sharpen 2 -quali
 
 1. フルディスク画像の場合:
 ```bash
-convert input_fulldisk.png -level 0%,100%,1.5 -modulate 100,250,102 -contrast -quality 99 output_fulldisk.png
+convert himawari8_fulldisk.png -level 0%,100%,1.5 -modulate 100,250,102 -contrast -quality 99 himawari8_fulldisk_enhanced.png
 ```
 
 2. 日本域画像の場合:
 ```bash
-convert input_japan.png -gamma 1.6 -modulate 100,290,102 -contrast -sharpen 2 -quality 99 output_japan.png
+convert himawari8_japan.png -gamma 1.6 -modulate 100,290,102 -contrast -sharpen 2 -quality 99 himawari8_japan_enhanced.png
 ```
+
+## 補正効果
+
+- 陸域の緑がより鮮やかに
+- 海域の青がより深く
+- 雲の輪郭がよりはっきりと
+- 全体的なコントラストの向上
 
 ## ライセンス
 
